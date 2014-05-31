@@ -22,7 +22,7 @@ import wardappfxpt1.model.Patient;
 /**
  * FXML Controller class
  *
- * @author mary
+ * @author mary martin
  */
 public class WardAppFXPt1Controller implements Initializable {
     @FXML
