@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Michael
+ * @author Michael and Mary
  */
 public class WardAppFXPt2 extends Application {
     
