@@ -82,7 +82,7 @@ public class Main extends Application {
     public boolean userLogging(String userId, String password){
         System.out.println("got user id " + userId + " password " + password);
         if (Authenticator.validate(userId, password)) {
-            System.out.println("OK");
+            System.out.println("OK - this is it!");
             loggedUser = User.of(userId);
             gotoProfile();
             return true;
