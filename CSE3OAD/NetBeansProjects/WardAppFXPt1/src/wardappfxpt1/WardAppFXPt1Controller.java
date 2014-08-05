@@ -13,9 +13,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import wardappfxpt1.model.IOManager;
 import wardappfxpt1.model.Patient;
 
@@ -25,32 +25,53 @@ import wardappfxpt1.model.Patient;
  * @author mary martin
  */
 public class WardAppFXPt1Controller implements Initializable {
+
     @FXML
-    private ListView<String> patientNameList;
+    private ListView<Patient> myPatientListView;
     @FXML
     private TextField selectedValue;
-    private ObservableList<String> patientNames;
+
+    private ObservableList<Patient> listViewPatientData = FXCollections.observableArrayList();
+    ;
     private ArrayList<Patient> patientDatabase;
-    private String fileName = "patient.dat";
+    private final String fileName = "patient.dat";
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         //populate the list
-        patientNames = FXCollections.observableArrayList();
+        //populate the list
+        listViewPatientData = FXCollections.observableArrayList();
         patientDatabase = IOManager.readTextDatabase(new File(fileName));
 
         for (Patient pt : patientDatabase) {
-            patientNames.add(pt.getName());
+            listViewPatientData.add(pt);
         }
-        patientNameList.setItems(patientNames);
-    }    
+        // Init ListView.
+        myPatientListView.setItems(listViewPatientData);
 
-    @FXML
-    private void handleMouseClick(MouseEvent event) {
-        selectedValue.setText(patientNameList.getSelectionModel().getSelectedItem());
+        myPatientListView.setCellFactory((listViewPatientData) -> {
+            return new ListCell<Patient>() {
+                @Override
+                protected void updateItem(Patient item, boolean empty) {
+                    super.updateItem(item, empty);
+
+                    if (item == null || empty) {
+                        setText(null);
+                    } else {
+                        setText(item.getName());
+                    }
+                }
+            };
+        });
+        // Handle ListView selection changes.
+        myPatientListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedValue.setText(newValue.getName() + "\n");
+        });
     }
-    
+
 }
