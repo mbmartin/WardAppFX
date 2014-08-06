@@ -31,28 +31,28 @@ public class WardAppFXPt1Controller implements Initializable {
     @FXML
     private TextField selectedValue;
 
-    private ObservableList<Patient> listViewPatientData = FXCollections.observableArrayList();
+    private ObservableList<Patient> listViewPatientData;
     private ArrayList<Patient> patientDatabase;
     private final String fileName = "patient.dat";
 
     /**
-     * Initializes the controller class.
+     * Initialize the controller class.
      *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //populate the list
-        listViewPatientData = FXCollections.observableArrayList();
+        //Get the patient data and add to an observable list 
         patientDatabase = IOManager.readTextDatabase(new File(fileName));
+        listViewPatientData = FXCollections.observableArrayList();
         for (Patient pt : patientDatabase) {
             listViewPatientData.add(pt);
         }
         
-        // Init ListView.
+        //set the data model for our ListView object (myPatientListView)
         myPatientListView.setItems(listViewPatientData);
-
+        //create, set the ListView cells and populate with patient name (if one exists)
         myPatientListView.setCellFactory((listViewPatientData) -> {
             return new ListCell<Patient>() {
                 @Override
@@ -67,7 +67,7 @@ public class WardAppFXPt1Controller implements Initializable {
                 }
             };
         });
-        // Handle ListView selection changes.
+        // handle ListView selection changes.
         myPatientListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             selectedValue.setText(newValue.getName() + "\n");
         });
