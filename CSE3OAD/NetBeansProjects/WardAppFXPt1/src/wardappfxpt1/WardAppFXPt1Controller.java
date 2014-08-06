@@ -32,7 +32,6 @@ public class WardAppFXPt1Controller implements Initializable {
     private TextField selectedValue;
 
     private ObservableList<Patient> listViewPatientData = FXCollections.observableArrayList();
-    ;
     private ArrayList<Patient> patientDatabase;
     private final String fileName = "patient.dat";
 
@@ -57,13 +56,13 @@ public class WardAppFXPt1Controller implements Initializable {
         myPatientListView.setCellFactory((listViewPatientData) -> {
             return new ListCell<Patient>() {
                 @Override
-                protected void updateItem(Patient item, boolean empty) {
-                    super.updateItem(item, empty);
+                protected void updateItem(Patient patient, boolean empty) {
+                    super.updateItem(patient, empty);
 
-                    if (item == null || empty) {
+                    if (patient == null || empty) {
                         setText(null);
                     } else {
-                        setText(item.getName());
+                        setText(patient.getName());
                     }
                 }
             };
