@@ -82,7 +82,7 @@ public final class Patient {
  * @return text string containing patient details separated by commas
  */
     public String toCSV() {
-        return patientID + "," + firstName + "," + lastName + "," + imageURL + "," + diagnosis + "," + timeEntered;
+        return patientID + "," + firstName + "," + lastName + "," + imageURL + "," + getDiagnosis() + "," + timeEntered;
     }
 /**
  * 
@@ -196,5 +196,4 @@ public final class Patient {
     public void setTimeEntered(String timeEntered) {
         this.timeEntered.set(timeEntered);
     }
-
 }
