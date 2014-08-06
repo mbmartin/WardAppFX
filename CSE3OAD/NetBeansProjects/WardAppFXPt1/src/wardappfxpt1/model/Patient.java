@@ -21,14 +21,14 @@ import javafx.beans.property.StringProperty;
  * @created 11-Aug-2012 3:56:18 PM
  */
 public final class Patient {
-    
+       
     private StringProperty firstName;
     private StringProperty lastName;
     private StringProperty diagnosis;
     private StringProperty imageURL;   
     private StringProperty patientID;
     private StringProperty timeEntered;
-
+    
     /**
      * no argument constructor
      */
@@ -75,14 +75,14 @@ public final class Patient {
      */
     @Override
     public String toString() {
-        return "Patient{" + "diagnosis=" + diagnosis + ", firstName=" + firstName + ", imageURL=" + imageURL + ", lastName=" + lastName + ", patientID=" + patientID + ", timeEntered=" + timeEntered + '}';
+        return "Patient{" + "diagnosis=" + diagnosis + ", firstName=" + firstName + ", imageURL=" + getImageURL() + ", lastName=" + lastName + ", patientID=" + patientID + ", timeEntered=" + timeEntered + '}';
     }
 /**
  * 
  * @return text string containing patient details separated by commas
  */
     public String toCSV() {
-        return patientID + "," + firstName + "," + lastName + "," + imageURL + "," + getDiagnosis() + "," + timeEntered;
+        return patientID + "," + firstName + "," + lastName + "," + getImageURL() + "," + getDiagnosis() + "," + timeEntered;
     }
 /**
  * 
