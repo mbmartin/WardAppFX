@@ -25,12 +25,20 @@ import wardappfxpt1.model.Patient;
  * @author mary martin
  */
 public class WardAppFXPt1Controller implements Initializable {
-
+    
+    //View Objects
     @FXML
     private ListView<Patient> myPatientListView;
+     @FXML
+    private TextField diagnosisField;
     @FXML
-    private TextField selectedValue;
-
+    private TextField timeEnteredField;
+    @FXML
+    private TextField nameField;
+    @FXML
+    private TextField patientIDField;
+    
+    //Model Objects
     private ObservableList<Patient> listViewPatientData;
     private ArrayList<Patient> patientDatabase;
     private final String fileName = "patient.dat";
@@ -50,9 +58,10 @@ public class WardAppFXPt1Controller implements Initializable {
             listViewPatientData.add(pt);
         }
         
-        //set the data model for our ListView object (myPatientListView)
+        //Set the data model for our ListView object (myPatientListView)
         myPatientListView.setItems(listViewPatientData);
-        //create, set the ListView cells and populate with patient name (if one exists)
+        
+        //Create, set the ListView cells and populate with patient name (if one exists)
         myPatientListView.setCellFactory((listViewPatientData) -> {
             return new ListCell<Patient>() {
                 @Override
@@ -67,9 +76,13 @@ public class WardAppFXPt1Controller implements Initializable {
                 }
             };
         });
-        // handle ListView selection changes.
+        
+        // handle ListView selection changes: get the new Patient data and set the View Objects.
         myPatientListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            selectedValue.setText(newValue.getName() + "\n");
+            patientIDField.setText(newValue.getPatientID());
+            nameField.setText(newValue.getName());
+            diagnosisField.setText(newValue.getDiagnosis());
+            timeEnteredField.setText(newValue.getTimeEntered());
         });
     }
 
