@@ -54,10 +54,7 @@ public class WardAppFXPt1Controller implements Initializable {
         //Get the patient data and add to an observable list 
         patientDatabase = IOManager.readTextDatabase(new File(fileName));
         listViewPatientData = FXCollections.observableArrayList();
-        for (Patient pt : patientDatabase) {
-            listViewPatientData.add(pt);
-        }
-        
+        listViewPatientData.setAll(patientDatabase);
         //Set the data model for our ListView object (myPatientListView)
         myPatientListView.setItems(listViewPatientData);
         
