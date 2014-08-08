@@ -19,7 +19,7 @@ public class WardAppFXPt1 extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("WardAppFXPt1.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/WardAppFXPt1.fxml"));
         
         Scene scene = new Scene(root);
         
