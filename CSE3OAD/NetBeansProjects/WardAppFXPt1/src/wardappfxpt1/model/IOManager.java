@@ -7,7 +7,7 @@ package wardappfxpt1.model;
 
 /**
  *
- * @author mary
+ * @author mary martin
  */
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
