@@ -18,8 +18,7 @@ import java.util.logging.Logger;
 
 /**
  **
- ** Class name: IOManager - class providing methods for reading and writing
- * text and Vector object files in APPWMS
+ ** Class name: IOManager - class providing methods for reading and writing text and other files in APPWMS
  *
  ** @author Mary Martin
  ** @version 4 *
