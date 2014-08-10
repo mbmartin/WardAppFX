@@ -1,8 +1,4 @@
-PracticeEg
-==========
+CSE3OAD-Projects
+================
 
-This is a practice repository 
- * just to see if it works
- * hope it does :)
- * 
- 
+This repository contains files for CSE3OAD
