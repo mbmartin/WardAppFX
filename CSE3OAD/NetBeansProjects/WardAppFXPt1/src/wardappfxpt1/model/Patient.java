@@ -68,14 +68,14 @@ public final class Patient {
      */
     @Override
     public String toString() {
-        return "Patient{" + "diagnosis=" + diagnosis + ", firstName=" + firstName + ", imageURL=" + getImageURL() + ", lastName=" + lastName + ", patientID=" + patientID + ", timeEntered=" + timeEntered + '}';
+        return "Patient{" + "diagnosis=" + getDiagnosis() + ", firstName=" + getFirstName() + ", imageURL=" + getImageURL() + ", lastName=" + getLastName() + ", patientID=" + getPatientID() + ", timeEntered=" + getTimeEntered() + '}';
     }
 /**
  * 
  * @return text string containing patient details separated by commas
  */
     public String toCSV() {
-        return patientID + "," + firstName + "," + lastName + "," + getImageURL() + "," + getDiagnosis() + "," + timeEntered;
+        return getPatientID() + "," + getFirstName() + "," + getLastName() + "," + getImageURL() + "," + getDiagnosis() + "," + getTimeEntered();
     }
 /**
  * 
