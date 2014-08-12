@@ -28,7 +28,7 @@ public final class Patient {
     public Patient() {
 
         String timeString = MessageFormat.format("{0,time, HH:mm}", new Date());
-        setPatient("", "", "", "", "", timeString);
+        setPatient(null, null, null, null, null, timeString);
     }
 /**
  * six argument (all details) constructor 
