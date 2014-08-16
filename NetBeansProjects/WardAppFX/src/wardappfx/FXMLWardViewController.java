@@ -14,13 +14,17 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import wardappfx.model.IOManager;
 import wardappfx.model.Patient;
@@ -63,6 +67,14 @@ public class FXMLWardViewController implements Initializable {
     private ObservableList<Patient> listViewPatientData;
     private ArrayList<Patient> patientDatabase;
     private String currentFileName = "patient.dat";
+    @FXML
+    private ImageView patientImage;
+    @FXML
+    private Tab patientTab;
+    @FXML
+    private Tab detailsTab;
+    @FXML
+    private Tab imageTab;
     
     
     @Override
@@ -157,6 +169,31 @@ public class FXMLWardViewController implements Initializable {
         } else if (file.getName().endsWith(".xml")) {
             IOManager.writeXMLDatabase(file.getName(), patientDatabase);
         }
+    }
+    
+    private void displayPatientImage(Patient patient) {
+        Image image;
+        if (patient != null) {
+            image = new Image(getClass().getResourceAsStream(patient.getImageURL()));
+        } else {
+            image = new Image(getClass().getResourceAsStream("images/WardAppLogo.png"));
+        }
+        patientImage.setImage(image);
+    }
+
+
+    @FXML
+    private void handleDetailsTabSelected(Event event) {
+        myPatientTableView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Patient> observable, Patient oldValue, Patient newValue) -> {
+            displayPatientDetails(newValue);
+        });
+    }
+
+    @FXML
+    private void handleImageTabSelected(Event event) {
+        myPatientTableView.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends Patient> observable, Patient oldValue, Patient newValue) -> {
+            displayPatientImage(newValue);
+        });
     }
 
 
