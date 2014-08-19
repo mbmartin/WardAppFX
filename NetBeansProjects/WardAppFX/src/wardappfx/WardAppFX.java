@@ -26,7 +26,7 @@ public class WardAppFX extends Application {
         ResourceBundle i18nBundle = ResourceBundle.getBundle("wardappfx.view.resources.Bundle", new Locale("en", "US"));
         //This line to resolve keys against properties for French language
         //ResourceBundle i18nBundle = ResourceBundle.getBundle("wardappfx.view.resources.Bundle", new Locale("fr", "FR"));
-        Parent root = FXMLLoader.load(getClass().getResource("view/FXMLWardView.fxml"), i18nBundle);
+        Parent root = FXMLLoader.load(getClass().getResource("view/WardAppView.fxml"), i18nBundle);
 
         Scene scene = new Scene(root);
 

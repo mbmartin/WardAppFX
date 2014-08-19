@@ -6,13 +6,6 @@
 
 package wardappfx.model;
 
-
-import java.text.MessageFormat;
-import java.util.Date;
-import java.util.StringTokenizer;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 /**
  * @author mary
  * @version 1.0
